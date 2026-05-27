@@ -43,7 +43,7 @@ export function Footer() {
       {/* Ambient glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-admato-cyan/[0.025] blur-[160px] rounded-full pointer-events-none" aria-hidden />
 
-      <div className="relative max-w-screen-xl mx-auto px-6 pt-20 pb-10">
+      <div className="relative max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8 pt-16 md:pt-20 pb-10">
         {/* Top grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[1.5fr_1fr_1fr_1.2fr] gap-12 xl:gap-14 mb-16">
 

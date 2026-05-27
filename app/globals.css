@@ -160,16 +160,10 @@ body {
    SECTION SPACING
 ───────────────────────────────────────── */
 .section-padding {
-  padding-top:    5rem;
-  padding-bottom: 5rem;
-  padding-left:   1.5rem;
-  padding-right:  1.5rem;
-}
-@media (min-width: 768px) {
-  .section-padding { padding-top: 8rem; padding-bottom: 8rem; }
-}
-@media (min-width: 1280px) {
-  .section-padding { padding-top: 12rem; padding-bottom: 12rem; }
+  padding-top:    clamp(4rem, 8vw, 12rem);
+  padding-bottom: clamp(4rem, 8vw, 12rem);
+  padding-left:   clamp(1rem, 4vw, 1.5rem);
+  padding-right:  clamp(1rem, 4vw, 1.5rem);
 }
 
 /* ─────────────────────────────────────────

@@ -100,7 +100,7 @@ export function About() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-purple-900/5 blur-[150px]" />
       </div>
 
-      <div className="relative max-w-screen-xl mx-auto px-6">
+      <div className="relative max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           className="text-center mb-24"

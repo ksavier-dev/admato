@@ -112,9 +112,9 @@ function MagneticBtn({ href, children, primary }: { href: string; children: Reac
 /* ─────────── Stat chip ─────────── */
 function Stat({ val, label }: { val: string; label: string }) {
   return (
-    <div className="flex flex-col items-center">
-      <span className="font-display text-[1.6rem] md:text-[2rem] font-bold text-white leading-none">{val}</span>
-      <span className="font-mono text-[0.62rem] tracking-[0.22em] text-white/35 uppercase mt-1">{label}</span>
+    <div className="flex flex-col items-center min-w-0">
+      <span className="font-display text-[1.4rem] sm:text-[1.6rem] lg:text-[2rem] font-bold text-white leading-none whitespace-nowrap">{val}</span>
+      <span className="font-mono text-[0.55rem] sm:text-[0.62rem] tracking-[0.18em] sm:tracking-[0.22em] text-white/35 uppercase mt-1 whitespace-nowrap">{label}</span>
     </div>
   )
 }
@@ -171,7 +171,7 @@ export function Hero() {
 
       {/* ── CONTENT ── */}
       <motion.div
-        className="relative z-10 flex flex-col items-center text-center px-6 max-w-[90rem] mx-auto w-full"
+        className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 max-w-[90rem] mx-auto w-full"
         style={{ y: yContent, opacity: opContent }}
       >
         {/* Eyebrow badge */}
@@ -256,13 +256,14 @@ export function Hero() {
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 3.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 z-10 w-full max-w-lg px-4 md:px-6"
+        className="absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 z-10 w-full px-4"
+        style={{ maxWidth: 'min(32rem, 90vw)' }}
       >
-        <div className="glass rounded-sm px-4 md:px-7 py-4 md:py-5 flex items-center justify-center gap-4 md:gap-12 divide-x divide-white/[0.07]">
-          <Stat val="500+" label="Realizacji" />
-          <div className="pl-4 md:pl-12"><Stat val="8 lat" label="Doświadczenia" /></div>
-          <div className="pl-4 md:pl-12"><Stat val="5★" label="Ocena" /></div>
-          <div className="hidden md:block pl-12"><Stat val="TOP 3" label="W Polsce" /></div>
+        <div className="glass rounded-sm px-4 sm:px-6 lg:px-7 py-4 lg:py-5 flex items-center justify-between divide-x divide-white/[0.07]">
+          <div className="flex-1 flex justify-center"><Stat val="500+" label="Realizacji" /></div>
+          <div className="flex-1 flex justify-center"><Stat val="8 lat" label="Doświadczenia" /></div>
+          <div className="flex-1 flex justify-center"><Stat val="5★" label="Ocena" /></div>
+          <div className="flex-1 flex justify-center"><Stat val="TOP 3" label="W Polsce" /></div>
         </div>
       </motion.div>
 

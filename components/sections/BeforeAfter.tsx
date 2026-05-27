@@ -144,7 +144,7 @@ export function BeforeAfter() {
     <section id="przed-po" className="relative bg-black section-padding">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-admato-dark/50 to-black pointer-events-none" />
 
-      <div className="relative max-w-screen-xl mx-auto px-6">
+      <div className="relative max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           className="text-center mb-16"

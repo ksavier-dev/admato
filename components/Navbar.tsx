@@ -70,7 +70,7 @@ export function Navbar() {
           )}
         />
 
-        <div className="relative max-w-screen-2xl mx-auto px-5 lg:px-10 flex items-center justify-between">
+        <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 flex items-center justify-between">
 
           {/* Logo */}
           <a href="#" className="group flex items-center gap-3">

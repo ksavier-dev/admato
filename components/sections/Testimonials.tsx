@@ -148,7 +148,7 @@ export function Testimonials() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-admato-purple/4 blur-[180px]" />
       </div>
 
-      <div className="relative max-w-screen-xl mx-auto px-4 md:px-6">
+      <div className="relative max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           className="text-center mb-12 md:mb-20"

@@ -148,7 +148,7 @@ export function Services() {
     <section id="uslugi" className="relative bg-black section-padding">
       <div className="absolute inset-0 mesh-bg pointer-events-none" aria-hidden />
 
-      <div className="relative max-w-screen-xl mx-auto px-6">
+      <div className="relative max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           className="text-center mb-12 md:mb-20"
