@@ -8,8 +8,13 @@ export function CustomCursor() {
   const cursorY = useMotionValue(-100)
   const [cursorState, setCursorState] = useState<'default' | 'hover' | 'click' | 'text'>('default')
   const [visible, setVisible] = useState(false)
+  const [isTouch, setIsTouch] = useState(true)
   // Track visible in a ref so the move handler never needs to be re-registered
   const visibleRef = useRef(false)
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia('(hover: none), (pointer: coarse)').matches)
+  }, [])
 
   const springConfig = { damping: 25, stiffness: 700, mass: 0.5 }
   const springX = useSpring(cursorX, springConfig)
@@ -73,6 +78,8 @@ export function CustomCursor() {
       document.removeEventListener('mouseenter', enter)
     }
   }, [cursorX, cursorY])
+
+  if (isTouch) return null
 
   return (
     <>

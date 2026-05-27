@@ -85,8 +85,8 @@ export function Experience3D() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-admato-cyan/[0.025] blur-[160px] rounded-full" />
       </motion.div>
 
-      {/* Decorative rings */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" aria-hidden>
+      {/* Decorative rings — hidden on mobile for performance */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none hidden md:block" aria-hidden>
         <Ring size={520}  dur={55}  />
         <Ring size={740}  dur={80}  rev dotColor="rgba(124,58,237,0.3)" />
         <Ring size={960}  dur={110} />
@@ -108,7 +108,9 @@ export function Experience3D() {
             Perfekcja w każdym świetle
           </h2>
           <p className="text-white/38 font-light text-base md:text-lg max-w-[38rem] mx-auto leading-relaxed">
-            Przesuń kursor — odkryj jak lakier reaguje na światło po naszej korekcji
+            <span className="hidden md:inline">Przesuń kursor — odkryj</span>
+            <span className="md:hidden">Odkryj</span>
+            {' '}jak lakier reaguje na światło po naszej korekcji
           </p>
         </motion.div>
       </div>

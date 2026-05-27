@@ -109,6 +109,8 @@ function GalleryItem({
   )
 }
 
+type Photo = { src: string; alt: string; category: string; span: string }
+
 function Lightbox({
   photos,
   current,
@@ -116,7 +118,7 @@ function Lightbox({
   onNext,
   onPrev,
 }: {
-  photos: typeof photos
+  photos: Photo[]
   current: number
   onClose: () => void
   onNext: () => void
@@ -252,7 +254,7 @@ export function Gallery() {
           </motion.div>
 
           {/* Masonry grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[200px] md:auto-rows-[220px] gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[180px] md:auto-rows-[220px] gap-2 md:gap-4 [grid-auto-flow:dense]">
             {filtered.map((photo, i) => (
               <GalleryItem
                 key={photo.src}

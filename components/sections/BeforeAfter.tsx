@@ -177,7 +177,7 @@ export function BeforeAfter() {
             <button
               key={c.label}
               onClick={() => setActiveCase(i)}
-              className={`px-5 py-2.5 text-sm font-light tracking-wider transition-all duration-300 rounded-sm ${
+              className={`px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-light tracking-wider transition-all duration-300 rounded-sm text-center ${
                 activeCase === i
                   ? 'bg-admato-cyan text-black font-medium'
                   : 'glass text-white/50 hover:text-white'

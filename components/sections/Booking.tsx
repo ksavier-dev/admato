@@ -195,10 +195,10 @@ export function Booking() {
         <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-purple-900/4 blur-[150px] rounded-full" />
       </div>
 
-      <div className="relative max-w-screen-xl mx-auto px-6">
+      <div className="relative max-w-screen-xl mx-auto px-4 md:px-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
@@ -216,7 +216,7 @@ export function Booking() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-12 xl:gap-20 items-start">
+        <div className="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-8 xl:gap-20 items-start">
           {/* Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

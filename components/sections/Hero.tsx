@@ -256,12 +256,12 @@ export function Hero() {
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 3.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 w-full max-w-lg px-6"
+        className="absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 z-10 w-full max-w-lg px-4 md:px-6"
       >
-        <div className="glass rounded-sm px-7 py-5 flex items-center justify-center gap-8 md:gap-12 divide-x divide-white/[0.07]">
+        <div className="glass rounded-sm px-4 md:px-7 py-4 md:py-5 flex items-center justify-center gap-4 md:gap-12 divide-x divide-white/[0.07]">
           <Stat val="500+" label="Realizacji" />
-          <div className="pl-8 md:pl-12"><Stat val="8 lat" label="Doświadczenia" /></div>
-          <div className="pl-8 md:pl-12"><Stat val="5★" label="Ocena" /></div>
+          <div className="pl-4 md:pl-12"><Stat val="8 lat" label="Doświadczenia" /></div>
+          <div className="pl-4 md:pl-12"><Stat val="5★" label="Ocena" /></div>
           <div className="hidden md:block pl-12"><Stat val="TOP 3" label="W Polsce" /></div>
         </div>
       </motion.div>

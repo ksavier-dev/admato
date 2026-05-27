@@ -56,10 +56,12 @@ body {
 }
 
 /* ─────────────────────────────────────────
-   CUSTOM CURSOR
+   CUSTOM CURSOR (only on pointer devices)
 ───────────────────────────────────────── */
-*, a, button, [role='button'], [data-cursor] {
-  cursor: none !important;
+@media (hover: hover) and (pointer: fine) {
+  *, a, button, [role='button'], [data-cursor] {
+    cursor: none !important;
+  }
 }
 
 /* ─────────────────────────────────────────
@@ -158,13 +160,13 @@ body {
    SECTION SPACING
 ───────────────────────────────────────── */
 .section-padding {
-  padding-top:    8rem;
-  padding-bottom: 8rem;
+  padding-top:    5rem;
+  padding-bottom: 5rem;
   padding-left:   1.5rem;
   padding-right:  1.5rem;
 }
 @media (min-width: 768px) {
-  .section-padding { padding-top: 10rem; padding-bottom: 10rem; }
+  .section-padding { padding-top: 8rem; padding-bottom: 8rem; }
 }
 @media (min-width: 1280px) {
   .section-padding { padding-top: 12rem; padding-bottom: 12rem; }

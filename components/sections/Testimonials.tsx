@@ -73,7 +73,7 @@ function StarRating({ rating }: { rating: number }) {
 
 function TestimonialCard({ t }: { t: typeof testimonials[number] }) {
   return (
-    <div className="h-full flex flex-col gap-6 glass border border-white/06 rounded-sm p-8 md:p-10 relative overflow-hidden group">
+    <div className="h-full flex flex-col gap-5 glass border border-white/06 rounded-sm p-6 md:p-10 relative overflow-hidden group">
       {/* Glow */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
         <div className="absolute top-0 right-0 w-64 h-64 bg-admato-cyan/3 blur-[80px] rounded-full" />
@@ -148,10 +148,10 @@ export function Testimonials() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-admato-purple/4 blur-[180px]" />
       </div>
 
-      <div className="relative max-w-screen-xl mx-auto px-6">
+      <div className="relative max-w-screen-xl mx-auto px-4 md:px-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}

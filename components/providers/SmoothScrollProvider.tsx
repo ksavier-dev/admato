@@ -17,6 +17,10 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   const [lenis, setLenis] = useState<Lenis | null>(null)
 
   useEffect(() => {
+    // Na urządzeniach dotykowych natywny scroll jest lepszy
+    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches
+    if (isTouch) return
+
     const instance = new Lenis({
       duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

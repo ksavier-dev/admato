@@ -119,7 +119,7 @@ export function About() {
         </motion.div>
 
         {/* Story + Image */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-16 md:mb-32">
           {/* Text */}
           <motion.div
             style={{ y: parallaxY }}
@@ -183,7 +183,7 @@ export function About() {
 
             {/* Floating badge */}
             <motion.div
-              className="absolute -bottom-6 -left-6 glass border border-white/08 rounded-sm px-6 py-5"
+              className="absolute -bottom-4 left-3 sm:-bottom-6 sm:-left-6 glass border border-white/08 rounded-sm px-5 py-4 sm:px-6 sm:py-5"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -201,7 +201,7 @@ export function About() {
 
         {/* Stats */}
         <motion.div
-          className="glass border border-white/06 rounded-sm px-8 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-white/06 mb-32"
+          className="glass border border-white/06 rounded-sm px-4 md:px-8 py-10 md:py-12 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-white/06 mb-16 md:mb-32"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}

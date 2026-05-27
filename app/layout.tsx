@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     'Profesjonalne studio detailingowe klasy premium w Warszawie. Korekta lakieru, powłoki ceramiczne, folie PPF, detailing wnętrza. Obsługujemy Ferrari, Porsche, Lamborghini, McLaren i inne supersamochody.',
   keywords:
     'detailing, korekta lakieru, powłoki ceramiczne, PPF, folie ochronne, detailing premium, Warszawa, supersamochody, Ferrari, Porsche',
-  metadataBase: new URL('https://admato-detailing.pl'),
+  metadataBase: new URL('https://admato.pl'),
   openGraph: {
     title: 'ADMATO Detailing | Perfekcja w każdym detalu',
     description: 'Profesjonalne studio detailingowe klasy premium. Obsługujemy wyjątkowe samochody dla wymagających klientów.',
