@@ -233,7 +233,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.7, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display italic text-white/45 mb-14 leading-relaxed"
+          className="font-display italic text-white/60 mb-14 leading-relaxed"
           style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)', maxWidth: '32rem' }}
         >
           &ldquo;Perfekcja w każdym detalu&rdquo;

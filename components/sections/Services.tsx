@@ -1,6 +1,5 @@
 'use client'
 
-import { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Sparkles, Shield, Car, Layers, Star, Droplets, ArrowRight } from 'lucide-react'
 
@@ -81,7 +80,7 @@ function Card({ s, i }: { s: typeof services[0]; i: number }) {
       </div>
 
       {/* Card body */}
-      <div className="relative h-full bg-[#0b0b0b] border border-white/[0.055] rounded-[3px] p-7 flex flex-col gap-5 group-hover:border-white/[0.1] transition-all duration-500 group-hover:-translate-y-1">
+      <div className="relative h-full bg-[#0d0d0d] border border-white/[0.09] rounded-[3px] p-7 flex flex-col gap-5 group-hover:border-white/[0.16] transition-all duration-500 group-hover:-translate-y-1">
 
         {/* Hover glow */}
         <div
@@ -121,7 +120,7 @@ function Card({ s, i }: { s: typeof services[0]; i: number }) {
 
         {/* Footer */}
         <div>
-          <div className="w-full h-px bg-white/[0.055] mb-4 group-hover:bg-white/[0.09] transition-colors duration-500" />
+          <div className="w-full h-px bg-white/[0.09] mb-4 group-hover:bg-white/[0.14] transition-colors duration-500" />
           <div className="flex items-end justify-between mb-4">
             <div>
               <div className="font-mono text-[0.58rem] tracking-[0.25em] text-white/22 uppercase mb-0.5">od</div>

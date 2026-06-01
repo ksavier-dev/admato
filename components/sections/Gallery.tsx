@@ -33,7 +33,7 @@ const photos = [
   {
     src: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=85',
     alt: 'Sportowy samochód',
-    category: 'Korekta',
+    category: 'Korekta Lakieru',
     span: 'col-span-1 row-span-2',
   },
   {
@@ -200,6 +200,11 @@ export function Gallery() {
       ? photos
       : photos.filter((p) => p.category === activeCategory)
 
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat)
+    setLightboxIndex(null) // close lightbox when switching category
+  }
+
   const openLightbox = (i: number) => setLightboxIndex(i)
   const closeLightbox = () => setLightboxIndex(null)
   const nextPhoto = () => setLightboxIndex((prev) => (prev !== null ? (prev + 1) % filtered.length : 0))
@@ -241,7 +246,7 @@ export function Gallery() {
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => handleCategoryChange(cat)}
                 className={`px-5 py-2.5 text-[0.72rem] font-light tracking-[0.14em] uppercase rounded-sm transition-all duration-300 ${
                   activeCategory === cat
                     ? 'bg-admato-cyan text-black font-medium'
