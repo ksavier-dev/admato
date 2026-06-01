@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { ArrowRight, ChevronDown, Phone } from 'lucide-react'
+import { useLanguage } from '@/context/LanguageContext'
 
 /* ─────────── Particle canvas ─────────── */
 function Particles() {
@@ -109,17 +110,7 @@ function MagneticBtn({ href, children, primary }: { href: string; children: Reac
   )
 }
 
-/* ─────────── Stat chip ─────────── */
-function Stat({ val, label }: { val: string; label: string }) {
-  return (
-    <div className="flex flex-col items-center min-w-0">
-      <span className="font-display text-[1.4rem] sm:text-[1.6rem] lg:text-[2rem] font-bold text-white leading-none whitespace-nowrap">{val}</span>
-      <span className="font-mono text-[0.55rem] sm:text-[0.62rem] tracking-[0.18em] sm:tracking-[0.22em] text-white/35 uppercase mt-1 whitespace-nowrap">{label}</span>
-    </div>
-  )
-}
-
-/* ─────────── Letter animation variants (outside component to avoid re-creation) ─────────── */
+/* ─────────── Letter animation variants ─────────── */
 const containerVariants = {
   hidden: {},
   show:   { transition: { staggerChildren: 0.06, delayChildren: 1.7 } },
@@ -131,6 +122,7 @@ const letterVariants = {
 
 /* ─────────── Hero ─────────── */
 export function Hero() {
+  const { t } = useLanguage()
   const wrapRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: wrapRef, offset: ['start start', 'end start'] })
   const yContent  = useTransform(scrollYProgress, [0, 1], ['0%', '18%'])
@@ -143,7 +135,7 @@ export function Hero() {
     <section
       ref={wrapRef}
       id="hero"
-      className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-black"
+      className="force-dark relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-black"
     >
       {/* Particles */}
       <Particles />
@@ -182,7 +174,7 @@ export function Hero() {
           transition={{ delay: 1.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-admato-cyan animate-pulse shrink-0" />
-          Premium Detailing Studio &nbsp;·&nbsp; Warszawa
+          {t.hero.badge}
         </motion.div>
 
         {/* ADMATO — letters stagger */}
@@ -236,7 +228,7 @@ export function Hero() {
           className="font-display italic text-white/60 mb-14 leading-relaxed"
           style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)', maxWidth: '32rem' }}
         >
-          &ldquo;Perfekcja w każdym detalu&rdquo;
+          &ldquo;{t.hero.tagline}&rdquo;
         </motion.p>
 
         {/* CTAs */}
@@ -247,11 +239,11 @@ export function Hero() {
           className="flex flex-col items-center gap-3.5"
         >
           <div className="flex flex-col sm:flex-row items-center gap-3.5">
-            <MagneticBtn href="#rezerwacja" primary>Umów wizytę</MagneticBtn>
-            <MagneticBtn href="#galeria">Zobacz realizacje</MagneticBtn>
+            <MagneticBtn href="#rezerwacja" primary>{t.hero.cta_primary}</MagneticBtn>
+            <MagneticBtn href="#galeria">{t.hero.cta_secondary}</MagneticBtn>
           </div>
 
-          {/* Phone — visible shortcut for users who prefer to call */}
+          {/* Phone */}
           <motion.a
             href="tel:+48500000000"
             initial={{ opacity: 0 }}
@@ -262,25 +254,9 @@ export function Hero() {
             <Phone size={11} className="group-hover:text-admato-cyan transition-colors duration-300" />
             <span className="font-mono text-[0.68rem] tracking-[0.14em]">+48 500 000 000</span>
             <span className="text-white/15 mx-0.5">·</span>
-            <span className="font-mono text-[0.65rem] text-white/18 tracking-[0.1em]">odpowiadamy w 2h</span>
+            <span className="font-mono text-[0.65rem] text-white/18 tracking-[0.1em]">{t.hero.reply}</span>
           </motion.a>
         </motion.div>
-      </motion.div>
-
-      {/* Stats bar */}
-      <motion.div
-        initial={{ opacity: 0, y: 28 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 3.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 z-10 w-full px-4"
-        style={{ maxWidth: 'min(32rem, 90vw)' }}
-      >
-        <div className="glass rounded-sm px-4 sm:px-6 lg:px-7 py-4 lg:py-5 flex items-center justify-between divide-x divide-white/[0.07]">
-          <div className="flex-1 flex justify-center"><Stat val="500+" label="Realizacji" /></div>
-          <div className="flex-1 flex justify-center"><Stat val="8 lat" label="Doświadczenia" /></div>
-          <div className="flex-1 flex justify-center"><Stat val="5★" label="Ocena" /></div>
-          <div className="flex-1 flex justify-center"><Stat val="TOP 3" label="W Polsce" /></div>
-        </div>
       </motion.div>
 
       {/* Scroll cue */}
@@ -290,7 +266,7 @@ export function Hero() {
         transition={{ delay: 4.1, duration: 1 }}
         className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5"
       >
-        <span className="font-mono text-[0.6rem] tracking-[0.4em] text-white/20 uppercase">scroll</span>
+        <span className="font-mono text-[0.6rem] tracking-[0.4em] text-white/20 uppercase">{t.hero.scroll}</span>
         <motion.div
           animate={{ y: [0, 5, 0] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}

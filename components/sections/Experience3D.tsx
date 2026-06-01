@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import Image from 'next/image'
+import { useLanguage } from '@/context/LanguageContext'
 
 /* ─────────── Orbiting ring ─────────── */
 function Ring({ size, dur, rev, dotColor = 'rgba(0,212,255,0.4)' }: { size: number; dur: number; rev?: boolean; dotColor?: string }) {
@@ -39,7 +40,8 @@ function SpecCard({
 
 /* ─────────── Main ─────────── */
 export function Experience3D() {
-  const sectionRef  = useRef<HTMLElement>(null)
+  const { t } = useLanguage()
+  const sectionRef   = useRef<HTMLElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [light, setLight] = useState({ x: 0, y: 0 })
 
@@ -76,7 +78,7 @@ export function Experience3D() {
     <motion.section
       ref={sectionRef}
       id="doswiadczenie"
-      className="relative bg-black overflow-hidden"
+      className="force-dark relative bg-black overflow-hidden"
       style={{ opacity: secOpacity }}
     >
       {/* Ambient */}
@@ -102,15 +104,15 @@ export function Experience3D() {
         >
           <div className="badge mx-auto mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-admato-cyan animate-pulse shrink-0" />
-            Showroom Experience
+            {t.showroom.badge}
           </div>
           <h2 className="font-display text-4xl md:text-6xl font-bold text-gradient mb-4 leading-none">
-            Perfekcja w każdym świetle
+            {t.showroom.title}
           </h2>
           <p className="text-white/55 font-light text-base md:text-lg max-w-[38rem] mx-auto leading-relaxed">
-            <span className="hidden md:inline">Przesuń kursor — odkryj</span>
-            <span className="md:hidden">Odkryj</span>
-            {' '}jak lakier reaguje na światło po naszej korekcji
+            <span className="hidden md:inline">{t.showroom.desc_desktop}</span>
+            <span className="md:hidden">{t.showroom.desc_mobile}</span>
+            {' '}{t.showroom.desc_rest}
           </p>
         </motion.div>
       </div>
@@ -167,9 +169,9 @@ export function Experience3D() {
             />
           </motion.div>
 
-          {/* Spec cards */}
+          {/* Spec card — top left */}
           <SpecCard
-            title="Ostatnia realizacja"
+            title={t.showroom.last_job}
             sub="Porsche 992 GT3 RS"
             detail="Ceramika 9H · PPF Full"
             floatY={[0, -10]}
@@ -187,7 +189,7 @@ export function Experience3D() {
           >
             <div className="w-4 h-4 rounded-[2px] bg-gradient-to-br from-slate-200 to-slate-400 shrink-0 shadow-sm" />
             <div>
-              <div className="font-mono text-[0.56rem] tracking-[0.2em] text-white/25 uppercase">Lakier</div>
+              <div className="font-mono text-[0.56rem] tracking-[0.2em] text-white/25 uppercase">{t.showroom.paint}</div>
               <div className="text-[0.78rem] text-white/65 font-light">Carrara White Metallic</div>
             </div>
           </motion.div>
@@ -201,7 +203,7 @@ export function Experience3D() {
           >
             <div className="w-1.5 h-1.5 rounded-full bg-admato-cyan shrink-0" />
             <div>
-              <div className="font-mono text-[0.56rem] tracking-[0.2em] text-white/25 uppercase">Zabieg</div>
+              <div className="font-mono text-[0.56rem] tracking-[0.2em] text-white/25 uppercase">{t.showroom.treatment}</div>
               <div className="text-[0.78rem] text-white/65 font-light">Three-stage correction</div>
             </div>
           </motion.div>
@@ -216,12 +218,7 @@ export function Experience3D() {
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        {[
-          { l: 'Korekcja',  v: 'Three-stage polish' },
-          { l: 'Powłoka',   v: 'GYEON 9H · 5 lat' },
-          { l: 'Ochrona',   v: 'XPEL PPF self-healing' },
-          { l: 'Wnętrze',   v: 'Leather spa + ceramics' },
-        ].map(({ l, v }, i) => (
+        {t.showroom.pills.map(({ l, v }, i) => (
           <motion.div
             key={l}
             initial={{ opacity: 0, y: 14 }}

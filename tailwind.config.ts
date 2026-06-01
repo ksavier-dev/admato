@@ -16,6 +16,11 @@ const config: Config = {
     },
     extend: {
       colors: {
+        /* These two primitives flip via CSS variables — enables automatic light/dark theming
+           without touching any component file. All text-white/X, bg-black, border-white/X etc.
+           automatically use the right values for the current theme. */
+        white: 'rgb(var(--color-fg) / <alpha-value>)',
+        black: 'rgb(var(--color-bg) / <alpha-value>)',
         admato: {
           black: '#000000',
           dark: '#0A0A0A',

@@ -2,21 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, ArrowUpRight } from 'lucide-react'
-
-const nav = [
-  { label: 'Usługi',    href: '#uslugi' },
-  { label: 'Showroom',  href: '#doswiadczenie' },
-  { label: 'Galeria',   href: '#galeria' },
-  { label: 'O nas',     href: '#o-nas' },
-  { label: 'Opinie',    href: '#opinie' },
-  { label: 'Kontakt',   href: '#rezerwacja' },
-]
-
-const services = [
-  'Korekta Lakieru', 'Powłoki Ceramiczne',
-  'Detailing Wnętrza', 'Folie PPF',
-  'Przygotowanie do Sprzedaży', 'Premium Car Spa',
-]
+import { useLanguage } from '@/context/LanguageContext'
 
 const socials = [
   { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
@@ -24,11 +10,8 @@ const socials = [
   { icon: Youtube,   href: 'https://youtube.com',   label: 'YouTube' },
 ]
 
-const contact = [
-  { icon: Phone,  val: '+48 500 000 000',            href: 'tel:+48500000000' },
-  { icon: Mail,   val: 'kontakt@admato.pl',           href: 'mailto:kontakt@admato.pl' },
-  { icon: MapPin, val: 'ul. Motorsport 7, Warszawa',  href: '#' },
-]
+const contactIcons = [Phone, Mail, MapPin]
+const contactHrefs = ['tel:+48500000000', 'mailto:kontakt@admato.pl', '#']
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 18 },
@@ -38,6 +21,9 @@ const fade = (delay: number) => ({
 })
 
 export function Footer() {
+  const { t } = useLanguage()
+  const year = new Date().getFullYear()
+
   return (
     <footer className="relative bg-black border-t border-white/[0.04] overflow-hidden">
       {/* Ambient glow */}
@@ -49,7 +35,6 @@ export function Footer() {
 
           {/* Brand col */}
           <motion.div {...fade(0)} className="flex flex-col gap-6">
-            {/* Logo */}
             <a href="#" className="group flex items-center gap-3 w-fit">
               <div className="relative w-9 h-9 border border-white/12 rounded-[3px] flex items-center justify-center group-hover:border-admato-cyan/35 transition-colors duration-500">
                 <span className="font-display text-[1rem] font-bold text-white">A</span>
@@ -63,10 +48,9 @@ export function Footer() {
             </a>
 
             <p className="text-white/30 text-[0.84rem] font-light leading-relaxed max-w-[240px]">
-              Premium studio detailingowe. Obsługujemy wyjątkowe samochody dla wymagających właścicieli od 2016.
+              {t.footer.tagline}
             </p>
 
-            {/* Socials */}
             <div className="flex items-center gap-2">
               {socials.map(({ icon: Icon, href, label }) => (
                 <a
@@ -85,9 +69,9 @@ export function Footer() {
 
           {/* Nav */}
           <motion.div {...fade(0.08)}>
-            <h4 className="font-mono text-[0.58rem] tracking-[0.38em] text-white/25 uppercase mb-5">Nawigacja</h4>
+            <h4 className="font-mono text-[0.58rem] tracking-[0.38em] text-white/25 uppercase mb-5">{t.footer.nav_label}</h4>
             <ul className="space-y-2.5">
-              {nav.map(l => (
+              {t.footer.nav.map(l => (
                 <li key={l.href}>
                   <a href={l.href} className="text-[0.84rem] text-white/38 hover:text-white/75 transition-colors duration-300 font-light animated-underline">
                     {l.label}
@@ -99,9 +83,9 @@ export function Footer() {
 
           {/* Services */}
           <motion.div {...fade(0.14)}>
-            <h4 className="font-mono text-[0.58rem] tracking-[0.38em] text-white/25 uppercase mb-5">Usługi</h4>
+            <h4 className="font-mono text-[0.58rem] tracking-[0.38em] text-white/25 uppercase mb-5">{t.footer.services_label}</h4>
             <ul className="space-y-2.5">
-              {services.map(s => (
+              {t.footer.services.map(s => (
                 <li key={s}>
                   <a href="#uslugi" className="text-[0.84rem] text-white/38 hover:text-white/75 transition-colors duration-300 font-light animated-underline">
                     {s}
@@ -113,22 +97,25 @@ export function Footer() {
 
           {/* Contact */}
           <motion.div {...fade(0.2)}>
-            <h4 className="font-mono text-[0.58rem] tracking-[0.38em] text-white/25 uppercase mb-5">Kontakt</h4>
+            <h4 className="font-mono text-[0.58rem] tracking-[0.38em] text-white/25 uppercase mb-5">{t.footer.contact_label}</h4>
             <ul className="space-y-4 mb-7">
-              {contact.map(({ icon: Icon, val, href }) => (
-                <li key={val}>
-                  <a href={href} className="flex items-start gap-3 group">
-                    <Icon size={12} className="text-white/22 group-hover:text-admato-cyan transition-colors duration-300 mt-0.5 shrink-0" />
-                    <span className="text-[0.82rem] text-white/38 font-light group-hover:text-white/70 transition-colors duration-300">{val}</span>
-                  </a>
-                </li>
-              ))}
+              {['+48 500 000 000', 'kontakt@admato.pl', 'ul. Motorsport 7, Warszawa'].map((val, i) => {
+                const Icon = contactIcons[i]
+                return (
+                  <li key={val}>
+                    <a href={contactHrefs[i]} className="flex items-start gap-3 group">
+                      <Icon size={12} className="text-white/22 group-hover:text-admato-cyan transition-colors duration-300 mt-0.5 shrink-0" />
+                      <span className="text-[0.82rem] text-white/38 font-light group-hover:text-white/70 transition-colors duration-300">{val}</span>
+                    </a>
+                  </li>
+                )
+              })}
             </ul>
             <a
               href="#rezerwacja"
               className="flex items-center justify-center gap-2 h-10 border border-admato-cyan/30 text-admato-cyan text-[0.72rem] tracking-[0.2em] uppercase hover:bg-admato-cyan hover:text-black transition-all duration-300 rounded-[3px] font-medium"
             >
-              Umów wizytę
+              {t.footer.book_cta}
               <ArrowUpRight size={12} />
             </a>
           </motion.div>
@@ -141,17 +128,17 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-5 gap-y-1.5">
             <span className="font-mono text-[0.68rem] text-white/18">
-              © {new Date().getFullYear()} ADMATO Detailing. Wszelkie prawa zastrzeżone.
+              © {year} ADMATO Detailing.
             </span>
-            {['Polityka prywatności', 'Regulamin'].map(t => (
-              <a key={t} href="#" className="font-mono text-[0.68rem] text-white/18 hover:text-white/45 transition-colors duration-300">{t}</a>
+            {[t.footer.privacy, t.footer.terms].map(text => (
+              <a key={text} href="#" className="font-mono text-[0.68rem] text-white/18 hover:text-white/45 transition-colors duration-300">{text}</a>
             ))}
           </div>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="group flex items-center gap-2 text-white/22 hover:text-white/55 transition-colors duration-300"
           >
-            <span className="font-mono text-[0.65rem] tracking-[0.2em] uppercase">Na górę</span>
+            <span className="font-mono text-[0.65rem] tracking-[0.2em] uppercase">{t.footer.top}</span>
             <div className="w-7 h-7 rounded-full border border-white/[0.08] flex items-center justify-center group-hover:border-white/22 transition-colors">
               <ArrowUpRight size={11} className="-rotate-45 group-hover:-translate-y-px group-hover:translate-x-px transition-transform" />
             </div>
@@ -159,12 +146,9 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Huge ghost text */}
+      {/* Ghost text */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none select-none overflow-hidden w-full text-center" aria-hidden>
-        <div
-          className="font-display font-black text-white/[0.018] whitespace-nowrap leading-none"
-          style={{ fontSize: 'clamp(5rem, 20vw, 15rem)' }}
-        >
+        <div className="font-display font-black text-white/[0.018] whitespace-nowrap leading-none" style={{ fontSize: 'clamp(5rem, 20vw, 15rem)' }}>
           ADMATO
         </div>
       </div>

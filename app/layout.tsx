@@ -6,6 +6,8 @@ import { LoadingScreen } from '@/components/LoadingScreen'
 import { CustomCursor } from '@/components/CustomCursor'
 import { ScrollProgress } from '@/components/ScrollProgress'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
+import { ThemeProvider } from '@/components/providers/ThemeProvider'
+import { LanguageProvider } from '@/context/LanguageContext'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -60,15 +62,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pl" className={`dark ${playfair.variable} ${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+    <html lang="pl" className={`${playfair.variable} ${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <body className="bg-black text-white antialiased">
-        <SmoothScrollProvider>
-          <LoadingScreen />
-          <CustomCursor />
-          <ScrollProgress />
-          <Navbar />
-          <main>{children}</main>
-        </SmoothScrollProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <SmoothScrollProvider>
+              <LoadingScreen />
+              <CustomCursor />
+              <ScrollProgress />
+              <Navbar />
+              <main>{children}</main>
+            </SmoothScrollProvider>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

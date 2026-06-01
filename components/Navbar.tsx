@@ -2,16 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence, useScroll } from 'framer-motion'
-import { Menu, X, Phone, MapPin } from 'lucide-react'
+import { Menu, X, Phone, MapPin, Sun, Moon } from 'lucide-react'
+import { useTheme } from 'next-themes'
 import { cn } from '@/lib/utils'
-
-const links = [
-  { label: 'Usługi',    href: '#uslugi' },
-  { label: 'Showroom',  href: '#doswiadczenie' },
-  { label: 'Galeria',   href: '#galeria' },
-  { label: 'O nas',     href: '#o-nas' },
-  { label: 'Opinie',    href: '#opinie' },
-]
+import { useLanguage } from '@/context/LanguageContext'
+import type { Lang } from '@/lib/translations'
 
 function NavLink({ href, label }: { href: string; label: string }) {
   const ref = useRef<HTMLAnchorElement>(null)
@@ -37,10 +32,60 @@ function NavLink({ href, label }: { href: string; label: string }) {
   )
 }
 
+/* ── Theme toggle ── */
+function ThemeToggle() {
+  const { theme, setTheme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  if (!mounted) return <div className="w-9 h-9" />
+
+  const isDark = resolvedTheme === 'dark'
+  return (
+    <button
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      className="w-9 h-9 flex items-center justify-center border border-white/[0.1] rounded-[3px] text-white/50 hover:text-white hover:border-white/25 transition-all duration-300"
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        {isDark
+          ? <motion.div key="sun"  initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}><Sun  size={14} /></motion.div>
+          : <motion.div key="moon" initial={{ rotate:  90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}><Moon size={14} /></motion.div>
+        }
+      </AnimatePresence>
+    </button>
+  )
+}
+
+/* ── Language toggle ── */
+function LangToggle() {
+  const { lang, setLang } = useLanguage()
+  const next: Lang = lang === 'pl' ? 'en' : 'pl'
+  return (
+    <button
+      onClick={() => setLang(next)}
+      aria-label="Switch language"
+      className="h-9 px-2.5 flex items-center border border-white/[0.1] rounded-[3px] text-white/50 hover:text-white hover:border-white/25 transition-all duration-300"
+    >
+      <span className="font-mono text-[0.65rem] tracking-[0.18em] uppercase leading-none">
+        {next}
+      </span>
+    </button>
+  )
+}
+
 export function Navbar() {
+  const { t } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen]         = useState(false)
   const { scrollY } = useScroll()
+
+  const links = [
+    { label: t.nav.services,  href: '#uslugi' },
+    { label: t.nav.showroom,  href: '#doswiadczenie' },
+    { label: t.nav.gallery,   href: '#galeria' },
+    { label: t.nav.about,     href: '#o-nas' },
+    { label: t.nav.reviews,   href: '#opinie' },
+  ]
 
   useEffect(() => scrollY.on('change', v => setScrolled(v > 60)), [scrollY])
   useEffect(() => {
@@ -65,7 +110,7 @@ export function Navbar() {
           className={cn(
             'absolute inset-0 transition-all duration-700',
             scrolled
-              ? 'bg-black/75 backdrop-blur-2xl border-b border-white/[0.05]'
+              ? 'bg-black/75 backdrop-blur-2xl border-b border-white/[0.05] nav-scrolled'
               : 'bg-transparent'
           )}
         />
@@ -91,27 +136,31 @@ export function Navbar() {
           </nav>
 
           {/* Right actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <a
               href="tel:+48500000000"
-              className="hidden md:flex items-center gap-2 text-[0.78rem] text-white/40 hover:text-white/80 transition-colors duration-300 font-mono"
+              className="hidden md:flex items-center gap-2 text-[0.78rem] text-white/40 hover:text-white/80 transition-colors duration-300 font-mono mr-1"
             >
               <Phone size={12} />
               +48 500 000 000
             </a>
 
+            {/* Theme + Lang toggles */}
+            <ThemeToggle />
+            <LangToggle />
+
             <a
               href="#rezerwacja"
-              className="hidden lg:flex items-center h-9 px-5 text-[0.72rem] tracking-[0.2em] uppercase border border-admato-cyan/35 text-admato-cyan hover:bg-admato-cyan hover:text-black transition-all duration-300 rounded-[3px] font-medium"
+              className="hidden lg:flex items-center h-9 px-5 text-[0.72rem] tracking-[0.2em] uppercase border border-admato-cyan/35 text-admato-cyan hover:bg-admato-cyan hover:text-black transition-all duration-300 rounded-[3px] font-medium ml-1"
             >
-              Umów wizytę
+              {t.nav.book}
             </a>
 
             {/* Hamburger */}
             <button
               onClick={() => setOpen(!open)}
               aria-label="Menu"
-              className="lg:hidden w-9 h-9 flex items-center justify-center border border-white/08 rounded-[3px] hover:border-white/20 transition-colors"
+              className="lg:hidden w-9 h-9 flex items-center justify-center border border-white/[0.1] rounded-[3px] hover:border-white/20 transition-colors"
             >
               <AnimatePresence mode="wait" initial={false}>
                 {open
@@ -162,8 +211,19 @@ export function Navbar() {
                 transition={{ delay: 0.42, duration: 0.45 }}
                 className="mt-8 flex items-center justify-center h-14 border border-admato-cyan/40 text-admato-cyan text-sm tracking-[0.2em] uppercase font-medium rounded-[3px]"
               >
-                Umów wizytę
+                {t.nav.book}
               </motion.a>
+
+              {/* Mobile theme + lang row */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.4 }}
+                className="flex items-center gap-3 mt-4"
+              >
+                <ThemeToggle />
+                <LangToggle />
+              </motion.div>
             </div>
 
             {/* Footer contact */}
@@ -175,7 +235,7 @@ export function Navbar() {
             >
               <div className="w-full h-px bg-white/[0.07] mb-2" />
               {[
-                { icon: Phone,  val: '+48 500 000 000',          href: 'tel:+48500000000' },
+                { icon: Phone,  val: '+48 500 000 000',            href: 'tel:+48500000000' },
                 { icon: MapPin, val: 'ul. Motorsport 7, Warszawa', href: '#' },
               ].map(({ icon: Icon, val, href }) => (
                 <a key={val} href={href} className="flex items-center gap-3 text-white/35 hover:text-white/60 transition-colors">

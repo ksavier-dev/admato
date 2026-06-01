@@ -3,6 +3,22 @@
 @tailwind utilities;
 
 /* ─────────────────────────────────────────
+   THEME CSS VARIABLES
+   --color-fg / --color-bg power ALL Tailwind
+   text-white / bg-black utilities via the
+   config override in tailwind.config.ts
+───────────────────────────────────────── */
+:root,
+html.dark {
+  --color-fg: 255 255 255;   /* white in dark mode  */
+  --color-bg: 0 0 0;         /* black in dark mode  */
+}
+html.light {
+  --color-fg: 20 20 18;      /* near-black text     */
+  --color-bg: 245 242 236;   /* warm cream bg       */
+}
+
+/* ─────────────────────────────────────────
    DESIGN TOKENS
 ───────────────────────────────────────── */
 :root {
@@ -282,3 +298,103 @@ canvas { display: block; touch-action: none; }
 
 /* Image transition */
 img { transition: opacity 0.4s ease; }
+
+/* ─────────────────────────────────────────
+   LIGHT MODE OVERRIDES
+   Handles the few things CSS variables can't
+   reach (rgba() hardcoded in class definitions)
+───────────────────────────────────────── */
+
+/* Base */
+html.light body {
+  background: rgb(245 242 236);
+  color: rgb(20 20 18);
+}
+
+/* Glass surfaces */
+html.light .glass {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(20, 20, 18, 0.1);
+}
+html.light .glass-md {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(20, 20, 18, 0.12);
+}
+html.light .glass-dark {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(20, 20, 18, 0.1);
+}
+
+/* Badge */
+html.light .badge {
+  background: rgba(20, 20, 18, 0.06);
+  border: 1px solid rgba(20, 20, 18, 0.14);
+  color: rgba(20, 20, 18, 0.6);
+}
+
+/* Cards */
+html.light .premium-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(20, 20, 18, 0.1);
+}
+html.light .premium-card:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(20, 20, 18, 0.18);
+}
+
+/* Inputs */
+html.light .premium-input {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(20, 20, 18, 0.12);
+  color: rgb(20 20 18);
+}
+html.light .premium-input:focus {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
+}
+html.light .premium-input::placeholder {
+  color: rgba(20, 20, 18, 0.3);
+}
+
+/* Gradient text — flip to dark */
+html.light .text-gradient {
+  background: linear-gradient(135deg, #141412 0%, #555 45%, #141412 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Navbar when scrolled */
+html.light .nav-scrolled {
+  background: rgba(245, 242, 236, 0.88) !important;
+  border-bottom-color: rgba(20, 20, 18, 0.07) !important;
+}
+
+/* Sections that must always stay dark (hero + showroom) */
+html.light .force-dark {
+  --color-fg: 255 255 255;
+  --color-bg: 0 0 0;
+}
+html.light .force-dark .glass {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+html.light .force-dark .badge {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Smooth theme transition */
+body,
+.glass, .glass-md, .glass-dark,
+.badge, .premium-card, .premium-input,
+section, footer, header {
+  transition:
+    background-color 0.4s ease,
+    border-color     0.35s ease,
+    color            0.35s ease;
+}

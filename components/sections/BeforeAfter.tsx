@@ -3,29 +3,24 @@
 import { useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useLanguage } from '@/context/LanguageContext'
 
-const cases = [
+const caseImages = [
   {
-    label: 'Korekta Lakieru — Porsche 911',
     before: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1000&q=85',
-    after: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1000&q=85',
-    description: 'Three-stage machine polish + powłoka ceramiczna 9H',
+    after:  'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1000&q=85',
   },
   {
-    label: 'Detailing Wnętrza — BMW M5',
     before: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=1000&q=85',
-    after: 'https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1000&q=85',
-    description: 'Kompletny detailing wnętrza + impregnacja skóry',
+    after:  'https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1000&q=85',
   },
   {
-    label: 'Folia PPF — Ferrari F8',
     before: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1000&q=85',
-    after: 'https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1000&q=85',
-    description: 'Pełna folia PPF XPEL Ultimate Plus',
+    after:  'https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=1000&q=85',
   },
 ]
 
-function Slider({ before, after }: { before: string; after: string }) {
+function Slider({ before, after, labelBefore, labelAfter }: { before: string; after: string; labelBefore: string; labelAfter: string }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState(50)
   const [isDragging, setIsDragging] = useState(false)
@@ -39,17 +34,11 @@ function Slider({ before, after }: { before: string; after: string }) {
   }, [])
 
   const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (!isDragging) return
-      updatePosition(e.clientX)
-    },
+    (e: React.MouseEvent) => { if (!isDragging) return; updatePosition(e.clientX) },
     [isDragging, updatePosition]
   )
-
   const handleTouchMove = useCallback(
-    (e: React.TouchEvent) => {
-      updatePosition(e.touches[0].clientX)
-    },
+    (e: React.TouchEvent) => { updatePosition(e.touches[0].clientX) },
     [updatePosition]
   )
 
@@ -64,38 +53,18 @@ function Slider({ before, after }: { before: string; after: string }) {
     >
       {/* After (base) */}
       <div className="absolute inset-0">
-        <Image
-          src={after}
-          alt="Po detailingu"
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
+        <Image src={after} alt={labelAfter} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
         <div className="absolute top-4 right-4 z-10">
-          <span className="bg-admato-cyan text-black text-xs font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-sm">
-            Po
-          </span>
+          <span className="bg-admato-cyan text-black text-xs font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-sm">{labelAfter}</span>
         </div>
       </div>
 
       {/* Before (clip) */}
-      <div
-        className="absolute inset-0 overflow-hidden"
-        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
-      >
-        <Image
-          src={before}
-          alt="Przed detailingiem"
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
+      <div className="absolute inset-0 overflow-hidden" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
+        <Image src={before} alt={labelBefore} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
         <div className="absolute top-4 left-4 z-10">
-          <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-sm border border-white/20">
-            Przed
-          </span>
+          <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-sm border border-white/20">{labelBefore}</span>
         </div>
-        {/* Overlay darkening for "before" */}
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
@@ -106,22 +75,15 @@ function Slider({ before, after }: { before: string; after: string }) {
         onMouseDown={() => setIsDragging(true)}
         onTouchStart={() => setIsDragging(true)}
       >
-        {/* Line */}
         <div className="absolute top-0 bottom-0 w-px bg-white/80" />
-
-        {/* Handle circle */}
         <motion.div
           className="relative w-12 h-12 rounded-full bg-white shadow-xl flex items-center justify-center z-10"
           whileHover={{ scale: 1.1 }}
           animate={{ scale: isDragging ? 1.15 : 1 }}
         >
           <div className="flex items-center gap-0.5">
-            <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-              <path d="M6 1L2 7L6 13" stroke="#000" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-            <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-              <path d="M2 1L6 7L2 13" stroke="#000" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M6 1L2 7L6 13" stroke="#000" strokeWidth="1.5" strokeLinecap="round" /></svg>
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M2 1L6 7L2 13" stroke="#000" strokeWidth="1.5" strokeLinecap="round" /></svg>
           </div>
         </motion.div>
       </div>
@@ -133,7 +95,7 @@ function Slider({ before, after }: { before: string; after: string }) {
             <path d="M1 5h10M7 1l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
             <path d="M11 5H1M5 1L1 5l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
           </svg>
-          Przeciągnij
+          {/* drag label injected by parent */}
         </span>
       </div>
     </div>
@@ -141,8 +103,9 @@ function Slider({ before, after }: { before: string; after: string }) {
 }
 
 export function BeforeAfter() {
+  const { t } = useLanguage()
   const [activeCase, setActiveCase] = useState(0)
-  const current = cases[activeCase]
+  const current = caseImages[activeCase]
 
   return (
     <section id="przed-po" className="relative bg-black section-padding">
@@ -159,13 +122,13 @@ export function BeforeAfter() {
         >
           <div className="badge mx-auto mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-admato-cyan" />
-            Efekty
+            {t.beforeAfter.badge}
           </div>
           <h2 className="font-display text-4xl md:text-6xl font-bold text-gradient mb-6">
-            Przed &amp; Po
+            {t.beforeAfter.title}
           </h2>
           <p className="text-white/55 font-light text-base md:text-lg max-w-lg mx-auto">
-            Efekty mówią same za siebie. Każda realizacja to historia transformacji.
+            {t.beforeAfter.desc}
           </p>
         </motion.div>
 
@@ -177,9 +140,9 @@ export function BeforeAfter() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {cases.map((c, i) => (
+          {t.beforeAfter.cases.map((c, i) => (
             <button
-              key={c.label}
+              key={i}
               onClick={() => setActiveCase(i)}
               className={`px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-light tracking-wider transition-all duration-300 rounded-sm text-center ${
                 activeCase === i
@@ -200,7 +163,12 @@ export function BeforeAfter() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-4xl mx-auto"
         >
-          <Slider before={current.before} after={current.after} />
+          <Slider
+            before={current.before}
+            after={current.after}
+            labelBefore={t.beforeAfter.before}
+            labelAfter={t.beforeAfter.after}
+          />
 
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -208,7 +176,7 @@ export function BeforeAfter() {
             transition={{ delay: 0.3 }}
             className="text-center text-white/35 text-sm font-light mt-6 font-mono tracking-wider"
           >
-            {current.description}
+            {t.beforeAfter.cases[activeCase].description}
           </motion.p>
         </motion.div>
       </div>
