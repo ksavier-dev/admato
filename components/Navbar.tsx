@@ -178,7 +178,7 @@ export function Navbar() {
         {open && (
           <motion.div
             key="mobile-menu"
-            className="fixed inset-0 z-[8900] flex flex-col bg-black"
+            className="force-dark fixed inset-0 z-[8900] flex flex-col bg-black"
             initial={{ clipPath: 'circle(0% at calc(100% - 52px) 44px)' }}
             animate={{ clipPath: 'circle(160% at calc(100% - 52px) 44px)' }}
             exit={{   clipPath: 'circle(0%   at calc(100% - 52px) 44px)' }}

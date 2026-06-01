@@ -59,7 +59,7 @@ function GalleryItem({ photo, index, categoryLabel, onClick }: { photo: Photo; i
 function Lightbox({ photos, current, onClose, onNext, onPrev }: { photos: Photo[]; current: number; onClose: () => void; onNext: () => void; onPrev: () => void }) {
   return (
     <motion.div
-      className="fixed inset-0 z-[9500] flex items-center justify-center"
+      className="force-dark fixed inset-0 z-[9500] flex items-center justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
