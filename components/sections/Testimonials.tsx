@@ -99,7 +99,7 @@ function TestimonialCard({ t }: { t: typeof testimonials[number] }) {
       <StarRating rating={t.rating} />
 
       {/* Quote */}
-      <blockquote className="flex-1 text-white/55 font-light leading-relaxed text-sm md:text-base italic">
+      <blockquote className="flex-1 text-white/70 font-light leading-relaxed text-sm md:text-base italic">
         &ldquo;{t.text}&rdquo;
       </blockquote>
 
@@ -164,7 +164,7 @@ export function Testimonials() {
           <h2 className="font-display text-4xl md:text-6xl font-bold text-gradient mb-6">
             Co mówią klienci
           </h2>
-          <p className="text-white/40 font-light text-base md:text-lg max-w-lg mx-auto">
+          <p className="text-white/55 font-light text-base md:text-lg max-w-lg mx-auto">
             Ponad 500 zrealizowanych projektów i setki zadowolonych właścicieli wyjątkowych aut.
           </p>
 
@@ -239,19 +239,26 @@ export function Testimonials() {
 
         {/* Trust indicators */}
         <motion.div
-          className="flex flex-wrap justify-center gap-6 md:gap-10 mt-16"
+          className="mt-14 pt-10 border-t border-white/[0.05]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          {['GYEON Certified', 'XPEL Authorized', 'Detailing World', 'Auto Bild TOP 10'].map((badge) => (
-            <div key={badge} className="flex items-center gap-2 text-white/25 font-mono text-xs tracking-[0.2em] uppercase">
-              <div className="w-4 h-px bg-white/20" />
-              {badge}
-              <div className="w-4 h-px bg-white/20" />
-            </div>
-          ))}
+          <p className="text-center font-mono text-[0.6rem] tracking-[0.3em] text-white/20 uppercase mb-6">Autoryzacje i wyróżnienia</p>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+            {[
+              { label: 'GYEON Certified', dot: '#00d4ff' },
+              { label: 'XPEL Authorized', dot: '#c9a84c' },
+              { label: 'Detailing World', dot: '#b8b8b8' },
+              { label: 'Auto Bild TOP 10', dot: '#f43f5e' },
+            ].map(({ label, dot }) => (
+              <div key={label} className="flex items-center gap-2.5 glass border border-white/[0.06] rounded-sm px-4 py-2">
+                <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: dot }} />
+                <span className="font-mono text-[0.65rem] tracking-[0.18em] text-white/40 uppercase">{label}</span>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

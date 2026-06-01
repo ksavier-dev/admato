@@ -128,7 +128,11 @@ function Slider({ before, after }: { before: string; after: string }) {
 
       {/* Drag hint */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
-        <span className="glass text-white/50 text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-mono">
+        <span className="glass border border-white/15 text-white/70 text-[0.65rem] tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-mono flex items-center gap-2">
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" className="opacity-60">
+            <path d="M1 5h10M7 1l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+            <path d="M11 5H1M5 1L1 5l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+          </svg>
           Przeciągnij
         </span>
       </div>
@@ -160,7 +164,7 @@ export function BeforeAfter() {
           <h2 className="font-display text-4xl md:text-6xl font-bold text-gradient mb-6">
             Przed &amp; Po
           </h2>
-          <p className="text-white/40 font-light text-base md:text-lg max-w-lg mx-auto">
+          <p className="text-white/55 font-light text-base md:text-lg max-w-lg mx-auto">
             Efekty mówią same za siebie. Każda realizacja to historia transformacji.
           </p>
         </motion.div>

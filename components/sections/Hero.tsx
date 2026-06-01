@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronDown, Phone } from 'lucide-react'
 
 /* ─────────── Particle canvas ─────────── */
 function Particles() {
@@ -244,10 +244,26 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.85, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row items-center gap-3.5"
+          className="flex flex-col items-center gap-3.5"
         >
-          <MagneticBtn href="#rezerwacja" primary>Umów wizytę</MagneticBtn>
-          <MagneticBtn href="#galeria">Zobacz realizacje</MagneticBtn>
+          <div className="flex flex-col sm:flex-row items-center gap-3.5">
+            <MagneticBtn href="#rezerwacja" primary>Umów wizytę</MagneticBtn>
+            <MagneticBtn href="#galeria">Zobacz realizacje</MagneticBtn>
+          </div>
+
+          {/* Phone — visible shortcut for users who prefer to call */}
+          <motion.a
+            href="tel:+48500000000"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 3.2, duration: 1 }}
+            className="flex items-center gap-2 text-white/25 hover:text-white/50 transition-colors duration-300 group"
+          >
+            <Phone size={11} className="group-hover:text-admato-cyan transition-colors duration-300" />
+            <span className="font-mono text-[0.68rem] tracking-[0.14em]">+48 500 000 000</span>
+            <span className="text-white/15 mx-0.5">·</span>
+            <span className="font-mono text-[0.65rem] text-white/18 tracking-[0.1em]">odpowiadamy w 2h</span>
+          </motion.a>
         </motion.div>
       </motion.div>
 

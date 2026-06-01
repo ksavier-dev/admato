@@ -141,7 +141,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-5 gap-y-1.5">
             <span className="font-mono text-[0.68rem] text-white/18">
-              © 2025 ADMATO Detailing. Wszelkie prawa zastrzeżone.
+              © {new Date().getFullYear()} ADMATO Detailing. Wszelkie prawa zastrzeżone.
             </span>
             {['Polityka prywatności', 'Regulamin'].map(t => (
               <a key={t} href="#" className="font-mono text-[0.68rem] text-white/18 hover:text-white/45 transition-colors duration-300">{t}</a>

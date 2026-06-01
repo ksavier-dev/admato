@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, ZoomIn, Instagram } from 'lucide-react'
 
 const photos = [
   {
@@ -225,7 +225,7 @@ export function Gallery() {
             <h2 className="font-display text-4xl md:text-6xl font-bold text-gradient mb-6">
               Galeria
             </h2>
-            <p className="text-white/40 font-light text-base md:text-lg max-w-lg mx-auto">
+            <p className="text-white/55 font-light text-base md:text-lg max-w-lg mx-auto">
               Każde zdjęcie to efekt godzin precyzyjnej pracy. Nasze realizacje mówią same za siebie.
             </p>
           </motion.div>
@@ -242,10 +242,10 @@ export function Gallery() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 text-xs font-light tracking-[0.15em] uppercase rounded-sm transition-all duration-300 ${
+                className={`px-5 py-2.5 text-[0.72rem] font-light tracking-[0.14em] uppercase rounded-sm transition-all duration-300 ${
                   activeCategory === cat
                     ? 'bg-admato-cyan text-black font-medium'
-                    : 'glass text-white/45 hover:text-white'
+                    : 'glass border border-white/[0.07] text-white/50 hover:text-white hover:border-white/15'
                 }`}
               >
                 {cat}
@@ -277,11 +277,10 @@ export function Gallery() {
               href="https://www.instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-sm text-white/40 hover:text-white transition-colors duration-300 font-mono tracking-wider uppercase"
+              className="inline-flex items-center gap-2.5 px-6 py-2.5 glass border border-white/[0.08] hover:border-white/20 rounded-sm text-[0.72rem] text-white/45 hover:text-white transition-all duration-300 font-mono tracking-[0.14em] uppercase"
             >
-              <span className="w-8 h-px bg-white/20" />
-              Więcej na Instagram
-              <span className="w-8 h-px bg-white/20" />
+              <Instagram size={13} />
+              Więcej realizacji na Instagram
             </a>
           </motion.div>
         </div>

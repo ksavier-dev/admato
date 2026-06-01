@@ -65,7 +65,7 @@ function StatCounter({ stat, delay }: { stat: typeof stats[number]; delay: numbe
 
   return (
     <div ref={ref} className="flex flex-col items-center text-center">
-      <div className="font-display text-5xl md:text-6xl font-black text-white mb-2 tabular-nums">
+      <div className="font-display text-5xl md:text-6xl font-black text-white mb-2 tabular-nums tracking-tight">
         {inView ? (
           <CountUp
             end={stat.value}
@@ -103,7 +103,7 @@ export function About() {
       <div className="relative max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          className="text-center mb-24"
+          className="text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
@@ -133,13 +133,13 @@ export function About() {
                 &ldquo;Nie robimy detailingu. Tworzymy arcydzieła.&rdquo;
               </p>
               <div className="w-16 h-px bg-gradient-to-r from-admato-cyan to-transparent" />
-              <p className="text-white/50 font-light leading-relaxed text-base md:text-lg">
+              <p className="text-white/65 font-light leading-relaxed text-base md:text-lg">
                 ADMATO to nie jest zwykłe myjnia czy warsztat. To studio, gdzie każdy samochód
                 traktujemy jak dzieło sztuki wymagające najwyższej uwagi i szacunku. Założone przez
                 pasjonatów motoryzacji, budujemy nasze studio na trzech filarach: pasji, precyzji
                 i jakości bez kompromisów.
               </p>
-              <p className="text-white/40 font-light leading-relaxed text-sm md:text-base">
+              <p className="text-white/55 font-light leading-relaxed text-sm md:text-base">
                 Od 8 lat obsługujemy właścicieli Ferrari, Porsche, Lamborghini, McLarena i innych
                 wyjątkowych pojazdów. Nasi klienci wracają — bo raz doświadczywszy ADMATO,
                 nie wyobrażają sobie innego miejsca dla swojego auta.
@@ -152,8 +152,8 @@ export function About() {
                       <v.icon size={16} className="text-white/50 group-hover:text-admato-cyan transition-colors duration-300" />
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-white/80 mb-1">{v.title}</div>
-                      <div className="text-xs text-white/35 font-light leading-relaxed">{v.description}</div>
+                      <div className="text-sm font-medium text-white/85 mb-1">{v.title}</div>
+                      <div className="text-xs text-white/55 font-light leading-relaxed">{v.description}</div>
                     </div>
                   </div>
                 ))}
@@ -246,7 +246,7 @@ export function About() {
                   <div className="premium-card rounded-sm p-6 inline-block w-full md:max-w-sm">
                     <div className="font-mono text-xs tracking-[0.3em] text-admato-cyan mb-2">{item.year}</div>
                     <div className="font-display text-xl font-bold text-white mb-2">{item.title}</div>
-                    <div className="text-white/45 text-sm font-light leading-relaxed">{item.description}</div>
+                    <div className="text-white/60 text-sm font-light leading-relaxed">{item.description}</div>
                   </div>
                 </div>
 

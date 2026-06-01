@@ -211,7 +211,7 @@ export function Booking() {
           <h2 className="font-display text-4xl md:text-6xl font-bold text-gradient mb-6">
             Umów wizytę
           </h2>
-          <p className="text-white/40 font-light text-base md:text-lg max-w-lg mx-auto">
+          <p className="text-white/55 font-light text-base md:text-lg max-w-lg mx-auto">
             Wypełnij formularz, a nasz doradca skontaktuje się z Tobą w ciągu 2 godzin roboczych.
           </p>
         </motion.div>
@@ -425,22 +425,42 @@ export function Booking() {
               </div>
             </div>
 
-            {/* Google Maps placeholder */}
-            <div className="glass border border-white/06 rounded-sm overflow-hidden aspect-[4/3] relative">
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                <MapPin size={24} className="text-admato-cyan/50" />
-                <div className="text-center">
-                  <div className="text-white/40 text-sm font-light">ul. Motorsport 7</div>
-                  <div className="text-white/25 text-xs font-mono">02-001 Warszawa</div>
+            {/* Quick contact alternative */}
+            <div className="glass border border-white/06 rounded-sm p-6">
+              <h3 className="font-display text-base font-bold text-white mb-1">Wolisz zadzwonić?</h3>
+              <p className="text-white/40 text-xs font-light mb-5">Oddzwonimy w ciągu 2 godzin roboczych.</p>
+              <a
+                href="tel:+48500000000"
+                className="flex items-center gap-3 group mb-4"
+              >
+                <div className="w-10 h-10 rounded-sm border border-admato-cyan/25 flex items-center justify-center group-hover:border-admato-cyan/50 group-hover:bg-admato-cyan/5 transition-all duration-300">
+                  <Phone size={15} className="text-admato-cyan/70 group-hover:text-admato-cyan transition-colors duration-300" />
                 </div>
-                <a
-                  href="https://maps.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-admato-cyan text-xs tracking-wider uppercase font-mono border-b border-admato-cyan/30 hover:border-admato-cyan transition-colors"
-                >
-                  Otwórz w Maps
-                </a>
+                <div>
+                  <div className="font-mono text-[10px] tracking-[0.2em] text-white/25 uppercase mb-0.5">Zadzwoń</div>
+                  <div className="text-white font-medium text-sm group-hover:text-admato-cyan transition-colors duration-300">+48 500 000 000</div>
+                </div>
+              </a>
+              <a
+                href="mailto:kontakt@admato.pl"
+                className="flex items-center gap-3 group"
+              >
+                <div className="w-10 h-10 rounded-sm border border-white/08 flex items-center justify-center group-hover:border-white/20 transition-all duration-300">
+                  <Mail size={15} className="text-white/40 group-hover:text-white transition-colors duration-300" />
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] tracking-[0.2em] text-white/25 uppercase mb-0.5">Email</div>
+                  <div className="text-white/70 text-sm group-hover:text-white transition-colors duration-300">kontakt@admato.pl</div>
+                </div>
+              </a>
+              <div className="mt-5 pt-4 border-t border-white/[0.06]">
+                <div className="flex items-start gap-3">
+                  <MapPin size={13} className="text-white/22 mt-0.5 shrink-0" />
+                  <div>
+                    <div className="text-white/55 text-xs font-light">ul. Motorsport 7, 02-001 Warszawa</div>
+                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] text-admato-cyan/60 hover:text-admato-cyan transition-colors tracking-wider uppercase mt-0.5 inline-block">Otwórz w Maps →</a>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

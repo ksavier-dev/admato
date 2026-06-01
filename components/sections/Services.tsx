@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Sparkles, Shield, Car, Layers, Star, Droplets } from 'lucide-react'
+import { Sparkles, Shield, Car, Layers, Star, Droplets, ArrowRight } from 'lucide-react'
 
 const services = [
   {
@@ -106,7 +106,7 @@ function Card({ s, i }: { s: typeof services[0]; i: number }) {
           <h3 className="font-display text-[1.12rem] font-bold text-white mb-2.5 group-hover:text-gradient transition-all duration-300 leading-snug">
             {s.title}
           </h3>
-          <p className="text-white/40 text-[0.84rem] leading-relaxed font-light mb-5">
+          <p className="text-white/55 text-[0.84rem] leading-relaxed font-light mb-5">
             {s.desc}
           </p>
           <ul className="flex flex-col gap-1.5">
@@ -122,16 +122,24 @@ function Card({ s, i }: { s: typeof services[0]; i: number }) {
         {/* Footer */}
         <div>
           <div className="w-full h-px bg-white/[0.055] mb-4 group-hover:bg-white/[0.09] transition-colors duration-500" />
-          <div className="flex items-end justify-between">
+          <div className="flex items-end justify-between mb-4">
             <div>
-              <div className="font-mono text-[0.58rem] tracking-[0.25em] text-white/22 uppercase mb-0.5">Cena</div>
-              <div className="font-display text-[1.05rem] font-bold text-white">{s.price}</div>
+              <div className="font-mono text-[0.58rem] tracking-[0.25em] text-white/22 uppercase mb-0.5">od</div>
+              <div className="font-display text-[1.18rem] font-bold text-white leading-none">{s.price}</div>
             </div>
             <div className="text-right">
               <div className="font-mono text-[0.58rem] tracking-[0.25em] text-white/22 uppercase mb-0.5">Czas</div>
               <div className="font-mono text-[0.78rem] text-white/50">{s.time}</div>
             </div>
           </div>
+          {/* Per-card CTA — direct path to booking */}
+          <a
+            href="#rezerwacja"
+            className="flex items-center justify-center gap-2 w-full h-9 rounded-[2px] border border-white/[0.07] text-[0.7rem] font-mono tracking-[0.14em] uppercase text-white/35 hover:text-white hover:border-white/20 transition-all duration-300 group/cta"
+          >
+            Umów termin
+            <ArrowRight size={11} className="group-hover/cta:translate-x-0.5 transition-transform duration-300" />
+          </a>
         </div>
 
         {/* Light sweep */}
@@ -165,7 +173,7 @@ export function Services() {
             style={{ fontSize: 'clamp(2.4rem, 7vw, 5.5rem)' }}>
             Nasze Usługi
           </h2>
-          <p className="text-white/38 font-light text-base md:text-lg max-w-[36rem] mx-auto leading-relaxed">
+          <p className="text-white/55 font-light text-base md:text-lg max-w-[36rem] mx-auto leading-relaxed">
             Każda usługa realizowana z obsesyjną dbałością o detal — wyłącznie premium materiały
             i sprawdzone technologie.
           </p>

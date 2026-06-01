@@ -107,7 +107,7 @@ export function Experience3D() {
           <h2 className="font-display text-4xl md:text-6xl font-bold text-gradient mb-4 leading-none">
             Perfekcja w każdym świetle
           </h2>
-          <p className="text-white/38 font-light text-base md:text-lg max-w-[38rem] mx-auto leading-relaxed">
+          <p className="text-white/55 font-light text-base md:text-lg max-w-[38rem] mx-auto leading-relaxed">
             <span className="hidden md:inline">Przesuń kursor — odkryj</span>
             <span className="md:hidden">Odkryj</span>
             {' '}jak lakier reaguje na światło po naszej korekcji
