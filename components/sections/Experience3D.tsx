@@ -78,12 +78,12 @@ export function Experience3D() {
     <motion.section
       ref={sectionRef}
       id="doswiadczenie"
-      className="force-dark relative bg-black overflow-hidden"
+      className="relative bg-black overflow-hidden"
       style={{ opacity: secOpacity }}
     >
       {/* Ambient */}
       <motion.div className="absolute inset-0 pointer-events-none" style={{ y: bgY }} aria-hidden>
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-[#060810]/70 to-black" />
+        <div className="exp3d-ambient absolute inset-0 bg-gradient-to-b from-black via-[#060810]/70 to-black" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] bg-admato-cyan/[0.025] blur-[160px] rounded-full" />
       </motion.div>
 
@@ -141,7 +141,7 @@ export function Experience3D() {
           {/* Shadow under car */}
           <motion.div
             style={{ x: imgX, y: imgY }}
-            className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-10 bg-black/70 blur-2xl rounded-full"
+            className="exp3d-shadow absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-10 bg-black/70 blur-2xl rounded-full"
             aria-hidden
           />
 

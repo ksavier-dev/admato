@@ -135,7 +135,7 @@ export function Hero() {
     <section
       ref={wrapRef}
       id="hero"
-      className="force-dark relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-black"
+      className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-black"
     >
       {/* Particles */}
       <Particles />

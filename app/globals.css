@@ -433,6 +433,25 @@ html.light .group .bg-black\/20 {
 /* ── Scrollbar ── */
 html.light ::-webkit-scrollbar-thumb { background: rgba(20, 20, 18, 0.25); }
 
+/* ── Hero section — light mode ── */
+/* The photo stays dimmed (brightness 0.07), gradient overlays become cream → nice warm light bg */
+html.light #hero .bg-gradient-to-b {
+  background: linear-gradient(to bottom, rgba(245,242,236,0.7), rgba(245,242,236,0.05), rgb(245,242,236));
+}
+html.light #hero .bg-gradient-to-r {
+  background: linear-gradient(to right, rgba(245,242,236,0.45), transparent, rgba(245,242,236,0.45));
+}
+
+/* ── Experience3D (Showroom) — light mode ── */
+/* Fix the hardcoded dark ambient gradient */
+html.light .exp3d-ambient {
+  background: linear-gradient(to bottom, rgb(245,242,236), rgba(235,232,226,0.65), rgb(245,242,236));
+}
+/* Replace the dark car shadow with a subtle warm shadow */
+html.light .exp3d-shadow {
+  background-color: rgba(20, 20, 18, 0.18) !important;
+}
+
 /* Smooth theme transition */
 body,
 .glass, .glass-md, .glass-dark,
