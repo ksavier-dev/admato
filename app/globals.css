@@ -388,10 +388,56 @@ html.light .force-dark .badge {
   color: rgba(255, 255, 255, 0.55);
 }
 
+/* ── mesh-bg light override ── */
+html.light .mesh-bg {
+  background-color: rgb(245 242 236);
+  background-image:
+    radial-gradient(at 20% 10%, rgba(0, 212, 255, 0.05) 0, transparent 55%),
+    radial-gradient(at 85% 5%,  rgba(124, 58, 237, 0.04) 0, transparent 55%),
+    radial-gradient(at 5%  60%, rgba(0, 0, 0, 0.02) 0, transparent 50%),
+    radial-gradient(at 90% 65%, rgba(0, 212, 255, 0.04) 0, transparent 50%),
+    radial-gradient(at 50% 95%, rgba(201, 168, 76, 0.03) 0, transparent 50%);
+}
+
+/* ── Service cards — white on cream background ── */
+html.light .service-card-body {
+  background-color: #ffffff !important;
+  border-color: rgba(20, 20, 18, 0.1) !important;
+}
+html.light .service-card-body:hover {
+  border-color: rgba(20, 20, 18, 0.2) !important;
+}
+
+/* ── Section & footer backgrounds ── */
+html.light section:not(.force-dark),
+html.light footer {
+  background-color: rgb(245 242 236);
+}
+
+/* ── Gradient overlays that use admato-dark ── */
+html.light .bg-gradient-to-b {
+  /* let the CSS variable handle from-black/to-black */
+}
+
+/* ── Testimonial cards ── */
+html.light section#opinie .glass {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(20, 20, 18, 0.1);
+}
+
+/* ── Gallery item overlay ── */
+html.light .group .bg-black\/20 {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ── Scrollbar ── */
+html.light ::-webkit-scrollbar-thumb { background: rgba(20, 20, 18, 0.25); }
+
 /* Smooth theme transition */
 body,
 .glass, .glass-md, .glass-dark,
 .badge, .premium-card, .premium-input,
+.service-card-body,
 section, footer, header {
   transition:
     background-color 0.4s ease,

@@ -31,7 +31,7 @@ function Card({ i }: { i: number }) {
       </div>
 
       {/* Card body */}
-      <div className="relative h-full bg-[#0d0d0d] border border-white/[0.09] rounded-[3px] p-7 flex flex-col gap-5 group-hover:border-white/[0.16] transition-all duration-500 group-hover:-translate-y-1">
+      <div className="service-card-body relative h-full bg-black border border-white/[0.09] rounded-[3px] p-7 flex flex-col gap-5 group-hover:border-white/[0.16] transition-all duration-500 group-hover:-translate-y-1">
 
         {/* Hover glow */}
         <div
